@@ -30,12 +30,22 @@ const navItems: NavItem[] = [
   {
     icon: <GridIcon />,
     name: "Dashboard",
-    subItems: [{ name: "Ecommerce", path: "/", pro: false }],
+    path: "/",
+  },
+  {
+    icon: <GridIcon />,
+    name: "LoRa Tags",
+    path: "/dashboard",
   },
   {
     icon: <CalenderIcon />,
     name: "Calendar",
     path: "/calendar",
+  },
+  {
+    name: "Location Tracker",
+    icon: <PageIcon />,
+    path: "/tracker",
   },
   {
     icon: <UserCircleIcon />,
