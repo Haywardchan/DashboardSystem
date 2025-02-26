@@ -5,10 +5,31 @@ import Label from "@/components/form/Label";
 import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "@/icons";
 import Link from "next/link";
 import React, { useState } from "react";
+import {useRouter} from 'next/navigation'
+import { registerUser } from "@/services/authService";
+import { useAuth } from "@/context/AuthContext";
 
 export default function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+  const {login} = useAuth();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+        await registerUser(username, email, password);
+        login(username, email);
+        router.push('/');
+    } catch (error) {
+        setError((error as Error).message);
+    }
+};
   return (
     <div className="flex flex-col flex-1 lg:w-1/2 w-full overflow-y-auto no-scrollbar">
       <div className="w-full max-w-md sm:pt-10 mx-auto mb-5">
@@ -31,7 +52,7 @@ export default function SignUpForm() {
             </p>
           </div>
           <div>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-1 sm:gap-5">
               <button className="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-gray-700 transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
                 <svg
                   width="20"
@@ -59,7 +80,7 @@ export default function SignUpForm() {
                 </svg>
                 Sign up with Google
               </button>
-              <button className="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-gray-700 transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
+              {/* <button className="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-gray-700 transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
                 <svg
                   width="21"
                   className="fill-current"
@@ -71,7 +92,7 @@ export default function SignUpForm() {
                   <path d="M15.6705 1.875H18.4272L12.4047 8.75833L19.4897 18.125H13.9422L9.59717 12.4442L4.62554 18.125H1.86721L8.30887 10.7625L1.51221 1.875H7.20054L11.128 7.0675L15.6705 1.875ZM14.703 16.475H16.2305L6.37054 3.43833H4.73137L14.703 16.475Z" />
                 </svg>
                 Sign up with X
-              </button>
+              </button> */}
             </div>
             <div className="relative py-3 sm:py-5">
               <div className="absolute inset-0 flex items-center">
@@ -85,21 +106,22 @@ export default function SignUpForm() {
             </div>
             <form>
               <div className="space-y-5">
-                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-1">
                   {/* <!-- First Name --> */}
                   <div className="sm:col-span-1">
                     <Label>
-                      First Name<span className="text-error-500">*</span>
+                      Username<span className="text-error-500">*</span>
                     </Label>
                     <Input
                       type="text"
                       id="fname"
                       name="fname"
-                      placeholder="Enter your first name"
+                      placeholder="Enter your Username"
+                      onChange={(e) => setUsername(e.target.value)}
                     />
                   </div>
                   {/* <!-- Last Name --> */}
-                  <div className="sm:col-span-1">
+                  {/* <div className="sm:col-span-1">
                     <Label>
                       Last Name<span className="text-error-500">*</span>
                     </Label>
@@ -109,7 +131,7 @@ export default function SignUpForm() {
                       name="lname"
                       placeholder="Enter your last name"
                     />
-                  </div>
+                  </div> */}
                 </div>
                 {/* <!-- Email --> */}
                 <div>
@@ -121,6 +143,7 @@ export default function SignUpForm() {
                     id="email"
                     name="email"
                     placeholder="Enter your email"
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 {/* <!-- Password --> */}
@@ -132,6 +155,7 @@ export default function SignUpForm() {
                     <Input
                       placeholder="Enter your password"
                       type={showPassword ? "text" : "password"}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                     <span
                       onClick={() => setShowPassword(!showPassword)}
@@ -145,6 +169,7 @@ export default function SignUpForm() {
                     </span>
                   </div>
                 </div>
+                {error && <p className="text-red-600 mt-2">{error}</p>}
                 {/* <!-- Checkbox --> */}
                 <div className="flex items-center gap-3">
                   <Checkbox
@@ -165,7 +190,7 @@ export default function SignUpForm() {
                 </div>
                 {/* <!-- Button --> */}
                 <div>
-                  <button className="flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600">
+                  <button className="flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600" onClick={handleSubmit}>
                     Sign Up
                   </button>
                 </div>
