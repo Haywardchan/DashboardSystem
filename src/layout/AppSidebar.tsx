@@ -52,7 +52,11 @@ const navItems: NavItem[] = [
     name: "User Profile",
     path: "/profile",
   },
-
+  {
+    icon: <UserCircleIcon />,
+    name: "Events",
+    path: "/event",
+  },
   {
     name: "Forms",
     icon: <ListIcon />,
@@ -321,24 +325,27 @@ const AppSidebar: React.FC = () => {
         <Link href="/">
           {isExpanded || isHovered || isMobileOpen ? (
             <>
+            <div className="flex flex-row justify-center items-center gap-5">
               <Image
                 className="dark:hidden"
-                src="/images/logo/logo.svg"
+                src="/images/logo/logo.jpeg"
                 alt="Logo"
-                width={150}
+                width={40}
                 height={40}
               />
               <Image
                 className="hidden dark:block"
                 src="/images/logo/logo-dark.svg"
                 alt="Logo"
-                width={150}
+                width={40}
                 height={40}
               />
+              <h1 className="font-semibold text-xl">Drone FYP 2025</h1>
+            </div>
             </>
           ) : (
             <Image
-              src="/images/logo/logo-icon.svg"
+              src="/images/logo/logo.jpeg"
               alt="Logo"
               width={32}
               height={32}
