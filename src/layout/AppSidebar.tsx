@@ -7,11 +7,13 @@ import { useSidebar } from "../context/SidebarContext";
 import {
   BoxCubeIcon,
   CalenderIcon,
+  CheckCircleIcon,
   ChevronDownIcon,
   GridIcon,
   HorizontaLDots,
   ListIcon,
   PageIcon,
+  PaperPlaneIcon,
   PieChartIcon,
   PlugInIcon,
   TableIcon,
@@ -28,7 +30,7 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   {
-    icon: <GridIcon />,
+    icon: <CalenderIcon />,
     name: "Dashboard",
     path: "/",
   },
@@ -37,14 +39,14 @@ const navItems: NavItem[] = [
     name: "LoRa Tags",
     path: "/dashboard",
   },
-  {
-    icon: <CalenderIcon />,
-    name: "Calendar",
-    path: "/calendar",
-  },
+  // {
+  //   icon: <CalenderIcon />,
+  //   name: "Calendar",
+  //   path: "/calendar",
+  // },
   {
     name: "Location Tracker",
-    icon: <PageIcon />,
+    icon: <PaperPlaneIcon />,
     path: "/tracker",
   },
   {
@@ -53,7 +55,7 @@ const navItems: NavItem[] = [
     path: "/profile",
   },
   {
-    icon: <UserCircleIcon />,
+    icon: <CheckCircleIcon/>,
     name: "Events",
     path: "/event",
   },

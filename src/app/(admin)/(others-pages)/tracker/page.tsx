@@ -15,14 +15,14 @@ export default function TrackerPage() {
 //     }
 //   }, [isAuthenticated, router]);
 
-  const [devEUI, setDevEUI] = useState("");
+  const [devEUI, setDevEUI] = useState("BF006278FB0E9C00");
 
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
     setDevEUI(searchParams.get("devEUI") || "");
   }, []);
-
-  const eui = "BF006278FB0E9C00"
-  return <MissingPersonTracker devEUI={eui} />;
+  
+  // const eui = "BF006278FB0E9C00"
+  // return <MissingPersonTracker devEUI={eui} />;
   return <MissingPersonTracker devEUI={devEUI} />;
 }

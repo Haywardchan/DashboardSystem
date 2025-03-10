@@ -1,19 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { useMissingPersons } from "@/hooks/useMissingPersons";
 import MissingPersonCard from "@/components/MissingPersonCard";
-import Drawer from "@/components/Drawer";
-import Header from "@/components/Header";
+import ComponentCard from "@/components/common/ComponentCard";
+import LoRaTagTable from "@/components/tables/Tags";
 
 export default function DashboardPage() {
   const router = useRouter();
   const { isAuthenticated } = useAuth();
   const { missingPersons, loading, error } = useMissingPersons();
   const { username } = useAuth();
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   // useEffect(() => {
   //   if (!isAuthenticated) {
@@ -28,15 +26,9 @@ export default function DashboardPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-grow container px-4 sm:px-6 lg:px-4 py-8 mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
-          {missingPersons.map((person) => (
-            <MissingPersonCard
-              key={person._id}
-              person={person}
-              onClick={() => router.push(`/tracker?devEUI=${person.devEUI}`)}
-            />
-          ))}
-        </div>
+        <ComponentCard title="LoRa Tags">
+          <LoRaTagTable />
+        </ComponentCard>
       </main>
     </div>
   );
