@@ -44,6 +44,8 @@
     "react-dom": "^19.0.0",
     "react-dropzone": "^14.3.5",
     "react-flatpickr": "^3.10.13",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
     "swiper": "^11.2.0",
     "tailwind-merge": "^3.0.2",
     "tailwindcss-animate": "^1.0.7"

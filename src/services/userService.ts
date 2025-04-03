@@ -85,3 +85,34 @@ export const deleteMissingPerson = async (id: string) => {
   }
   return response.json(); // Return the response data
 };
+
+// Function to get drone location
+export const getDrone = async () => {
+  const response = await fetch(`http://192.168.254.2:8080/api/getdrone`, {
+    method: 'GET',
+  });
+  console.log(response)
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.error);
+  }
+  return response.json(); // Return the response data
+};
+
+// Function to get the localization result
+export const getLocalization = async (gatewayData: any) => {
+  const response = await fetch(`http://10.0.0.26:5000/api/localization`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(gatewayData),
+  });
+  // console.log("HELLLLOOOOEOFJOEJOEC")
+  // console.log(response)
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.error);
+  }
+  return response.json(); // Return the response data
+};

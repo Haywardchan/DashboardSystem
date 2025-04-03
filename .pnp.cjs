@@ -75,6 +75,8 @@ const RAW_RUNTIME_STATE =
           ["react-dom", "virtual:f597c2a736640bab4c3e2d242d96d69ed11c084b33e29f51fc59de1c732a1e2291e9bffce049b4fa57e7ba91316f9fe76bce068de049af8f12615bb56a47c0b9#npm:19.0.0"],\
           ["react-dropzone", "virtual:f597c2a736640bab4c3e2d242d96d69ed11c084b33e29f51fc59de1c732a1e2291e9bffce049b4fa57e7ba91316f9fe76bce068de049af8f12615bb56a47c0b9#npm:14.3.8"],\
           ["react-flatpickr", "virtual:f597c2a736640bab4c3e2d242d96d69ed11c084b33e29f51fc59de1c732a1e2291e9bffce049b4fa57e7ba91316f9fe76bce068de049af8f12615bb56a47c0b9#npm:3.10.13"],\
+          ["socket.io", "npm:4.8.1"],\
+          ["socket.io-client", "npm:4.8.1"],\
           ["swiper", "npm:11.2.4"],\
           ["tailwind-merge", "npm:3.0.2"],\
           ["tailwindcss", "npm:3.4.17"],\
@@ -4795,6 +4797,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@socket.io/component-emitter", [\
+      ["npm:3.1.2", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/@socket.io-component-emitter-npm-3.1.2-bc4133d33f-10c0.zip/node_modules/@socket.io/component-emitter/",\
+        "packageDependencies": [\
+          ["@socket.io/component-emitter", "npm:3.1.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@svgdotjs/svg.draggable.js", [\
       ["npm:3.0.6", {\
         "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/@svgdotjs-svg.draggable.js-npm-3.0.6-791140de47-10c0.zip/node_modules/@svgdotjs/svg.draggable.js/",\
@@ -5234,6 +5245,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/cors", [\
+      ["npm:2.8.17", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/@types-cors-npm-2.8.17-2556d16051-10c0.zip/node_modules/@types/cors/",\
+        "packageDependencies": [\
+          ["@types/cors", "npm:2.8.17"],\
+          ["@types/node", "npm:22.13.16"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/estree", [\
       ["npm:1.0.6", {\
         "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/@types-estree-npm-1.0.6-b5e23f2ea2-10c0.zip/node_modules/@types/estree/",\
@@ -5306,6 +5327,14 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@types/node", "npm:20.17.19"],\
           ["undici-types", "npm:6.19.8"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:22.13.16", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/@types-node-npm-22.13.16-2049f7298a-10c0.zip/node_modules/@types/node/",\
+        "packageDependencies": [\
+          ["@types/node", "npm:22.13.16"],\
+          ["undici-types", "npm:6.20.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -5585,6 +5614,17 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/abbrev-npm-3.0.0-946682a7b1-10c0.zip/node_modules/abbrev/",\
         "packageDependencies": [\
           ["abbrev", "npm:3.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["accepts", [\
+      ["npm:1.3.8", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/accepts-npm-1.3.8-9a812371c9-10c0.zip/node_modules/accepts/",\
+        "packageDependencies": [\
+          ["accepts", "npm:1.3.8"],\
+          ["mime-types", "npm:2.1.35"],\
+          ["negotiator", "npm:0.6.3"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -6023,6 +6063,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["base64id", [\
+      ["npm:2.0.0", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/base64id-npm-2.0.0-ef4afeee0a-10c0.zip/node_modules/base64id/",\
+        "packageDependencies": [\
+          ["base64id", "npm:2.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["binary-extensions", [\
       ["npm:2.3.0", {\
         "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/binary-extensions-npm-2.3.0-bd3f20d865-10c0.zip/node_modules/binary-extensions/",\
@@ -6334,12 +6383,32 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["cookie", [\
+      ["npm:0.7.2", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/cookie-npm-0.7.2-6ea9ee4231-10c0.zip/node_modules/cookie/",\
+        "packageDependencies": [\
+          ["cookie", "npm:0.7.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["core-js-compat", [\
       ["npm:3.40.0", {\
         "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/core-js-compat-npm-3.40.0-4943db3368-10c0.zip/node_modules/core-js-compat/",\
         "packageDependencies": [\
           ["core-js-compat", "npm:3.40.0"],\
           ["browserslist", "npm:4.24.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["cors", [\
+      ["npm:2.8.5", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/cors-npm-2.8.5-c9935a2d12-10c0.zip/node_modules/cors/",\
+        "packageDependencies": [\
+          ["cors", "npm:2.8.5"],\
+          ["object-assign", "npm:4.1.1"],\
+          ["vary", "npm:1.1.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -6524,6 +6593,13 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
+      ["npm:4.3.7", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/debug-npm-4.3.7-385645adf9-10c0.zip/node_modules/debug/",\
+        "packageDependencies": [\
+          ["debug", "npm:4.3.7"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
       ["npm:4.4.0", {\
         "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/debug-npm-4.4.0-f6efe76023-10c0.zip/node_modules/debug/",\
         "packageDependencies": [\
@@ -6549,6 +6625,20 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/__virtual__/debug-virtual-d5eaab0074/3/Users/miruh/AppData/Local/Yarn/Berry/cache/debug-npm-4.4.0-f6efe76023-10c0.zip/node_modules/debug/",\
         "packageDependencies": [\
           ["debug", "virtual:72b2f21ce879713dcf4e532ac7aa8c6e521aada01413994716d49ebe3da3cdbe351979e6a511ce9d4870a12301e93b7d4819fb92b59b8c5fa681f079b44d4baa#npm:4.4.0"],\
+          ["@types/supports-color", null],\
+          ["ms", "npm:2.1.3"],\
+          ["supports-color", null]\
+        ],\
+        "packagePeers": [\
+          "@types/supports-color",\
+          "supports-color"\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["virtual:e8bdcef0cf0934194f6c013397211c12e97f7afa25e778315990e5af67273d4a72a5fd876374ee7ab692ddc04df0f6a366086d076f5cf07da179b76448a13afc#npm:4.3.7", {\
+        "packageLocation": "./.yarn/__virtual__/debug-virtual-b9133599b0/3/Users/miruh/AppData/Local/Yarn/Berry/cache/debug-npm-4.3.7-385645adf9-10c0.zip/node_modules/debug/",\
+        "packageDependencies": [\
+          ["debug", "virtual:e8bdcef0cf0934194f6c013397211c12e97f7afa25e778315990e5af67273d4a72a5fd876374ee7ab692ddc04df0f6a366086d076f5cf07da179b76448a13afc#npm:4.3.7"],\
           ["@types/supports-color", null],\
           ["ms", "npm:2.1.3"],\
           ["supports-color", null]\
@@ -6766,6 +6856,47 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["encoding", "npm:0.1.13"],\
           ["iconv-lite", "npm:0.6.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["engine.io", [\
+      ["npm:6.6.4", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/engine.io-npm-6.6.4-1d61fc58e3-10c0.zip/node_modules/engine.io/",\
+        "packageDependencies": [\
+          ["engine.io", "npm:6.6.4"],\
+          ["@types/cors", "npm:2.8.17"],\
+          ["@types/node", "npm:22.13.16"],\
+          ["accepts", "npm:1.3.8"],\
+          ["base64id", "npm:2.0.0"],\
+          ["cookie", "npm:0.7.2"],\
+          ["cors", "npm:2.8.5"],\
+          ["debug", "virtual:e8bdcef0cf0934194f6c013397211c12e97f7afa25e778315990e5af67273d4a72a5fd876374ee7ab692ddc04df0f6a366086d076f5cf07da179b76448a13afc#npm:4.3.7"],\
+          ["engine.io-parser", "npm:5.2.3"],\
+          ["ws", "virtual:e8bdcef0cf0934194f6c013397211c12e97f7afa25e778315990e5af67273d4a72a5fd876374ee7ab692ddc04df0f6a366086d076f5cf07da179b76448a13afc#npm:8.17.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["engine.io-client", [\
+      ["npm:6.6.3", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/engine.io-client-npm-6.6.3-e8bdcef0cf-10c0.zip/node_modules/engine.io-client/",\
+        "packageDependencies": [\
+          ["engine.io-client", "npm:6.6.3"],\
+          ["@socket.io/component-emitter", "npm:3.1.2"],\
+          ["debug", "virtual:e8bdcef0cf0934194f6c013397211c12e97f7afa25e778315990e5af67273d4a72a5fd876374ee7ab692ddc04df0f6a366086d076f5cf07da179b76448a13afc#npm:4.3.7"],\
+          ["engine.io-parser", "npm:5.2.3"],\
+          ["ws", "virtual:e8bdcef0cf0934194f6c013397211c12e97f7afa25e778315990e5af67273d4a72a5fd876374ee7ab692ddc04df0f6a366086d076f5cf07da179b76448a13afc#npm:8.17.1"],\
+          ["xmlhttprequest-ssl", "npm:2.1.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["engine.io-parser", [\
+      ["npm:5.2.3", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/engine.io-parser-npm-5.2.3-6dfa36cede-10c0.zip/node_modules/engine.io-parser/",\
+        "packageDependencies": [\
+          ["engine.io-parser", "npm:5.2.3"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -7632,6 +7763,8 @@ const RAW_RUNTIME_STATE =
           ["react-dom", "virtual:f597c2a736640bab4c3e2d242d96d69ed11c084b33e29f51fc59de1c732a1e2291e9bffce049b4fa57e7ba91316f9fe76bce068de049af8f12615bb56a47c0b9#npm:19.0.0"],\
           ["react-dropzone", "virtual:f597c2a736640bab4c3e2d242d96d69ed11c084b33e29f51fc59de1c732a1e2291e9bffce049b4fa57e7ba91316f9fe76bce068de049af8f12615bb56a47c0b9#npm:14.3.8"],\
           ["react-flatpickr", "virtual:f597c2a736640bab4c3e2d242d96d69ed11c084b33e29f51fc59de1c732a1e2291e9bffce049b4fa57e7ba91316f9fe76bce068de049af8f12615bb56a47c0b9#npm:3.10.13"],\
+          ["socket.io", "npm:4.8.1"],\
+          ["socket.io-client", "npm:4.8.1"],\
           ["swiper", "npm:11.2.4"],\
           ["tailwind-merge", "npm:3.0.2"],\
           ["tailwindcss", "npm:3.4.17"],\
@@ -8737,6 +8870,25 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["mime-db", [\
+      ["npm:1.52.0", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/mime-db-npm-1.52.0-b5371d6fd2-10c0.zip/node_modules/mime-db/",\
+        "packageDependencies": [\
+          ["mime-db", "npm:1.52.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["mime-types", [\
+      ["npm:2.1.35", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/mime-types-npm-2.1.35-dd9ea9f3e2-10c0.zip/node_modules/mime-types/",\
+        "packageDependencies": [\
+          ["mime-types", "npm:2.1.35"],\
+          ["mime-db", "npm:1.52.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["mini-svg-data-uri", [\
       ["npm:1.4.4", {\
         "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/mini-svg-data-uri-npm-1.4.4-929f6f1119-10c0.zip/node_modules/mini-svg-data-uri/",\
@@ -8903,6 +9055,13 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["negotiator", [\
+      ["npm:0.6.3", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/negotiator-npm-0.6.3-9d50e36171-10c0.zip/node_modules/negotiator/",\
+        "packageDependencies": [\
+          ["negotiator", "npm:0.6.3"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:1.0.0", {\
         "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/negotiator-npm-1.0.0-47d727e27e-10c0.zip/node_modules/negotiator/",\
         "packageDependencies": [\
@@ -10341,6 +10500,57 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["socket.io", [\
+      ["npm:4.8.1", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/socket.io-npm-4.8.1-26090d3c01-10c0.zip/node_modules/socket.io/",\
+        "packageDependencies": [\
+          ["socket.io", "npm:4.8.1"],\
+          ["accepts", "npm:1.3.8"],\
+          ["base64id", "npm:2.0.0"],\
+          ["cors", "npm:2.8.5"],\
+          ["debug", "virtual:e8bdcef0cf0934194f6c013397211c12e97f7afa25e778315990e5af67273d4a72a5fd876374ee7ab692ddc04df0f6a366086d076f5cf07da179b76448a13afc#npm:4.3.7"],\
+          ["engine.io", "npm:6.6.4"],\
+          ["socket.io-adapter", "npm:2.5.5"],\
+          ["socket.io-parser", "npm:4.2.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["socket.io-adapter", [\
+      ["npm:2.5.5", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/socket.io-adapter-npm-2.5.5-7a0505537f-10c0.zip/node_modules/socket.io-adapter/",\
+        "packageDependencies": [\
+          ["socket.io-adapter", "npm:2.5.5"],\
+          ["debug", "virtual:e8bdcef0cf0934194f6c013397211c12e97f7afa25e778315990e5af67273d4a72a5fd876374ee7ab692ddc04df0f6a366086d076f5cf07da179b76448a13afc#npm:4.3.7"],\
+          ["ws", "virtual:e8bdcef0cf0934194f6c013397211c12e97f7afa25e778315990e5af67273d4a72a5fd876374ee7ab692ddc04df0f6a366086d076f5cf07da179b76448a13afc#npm:8.17.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["socket.io-client", [\
+      ["npm:4.8.1", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/socket.io-client-npm-4.8.1-eb1c9f0ea4-10c0.zip/node_modules/socket.io-client/",\
+        "packageDependencies": [\
+          ["socket.io-client", "npm:4.8.1"],\
+          ["@socket.io/component-emitter", "npm:3.1.2"],\
+          ["debug", "virtual:e8bdcef0cf0934194f6c013397211c12e97f7afa25e778315990e5af67273d4a72a5fd876374ee7ab692ddc04df0f6a366086d076f5cf07da179b76448a13afc#npm:4.3.7"],\
+          ["engine.io-client", "npm:6.6.3"],\
+          ["socket.io-parser", "npm:4.2.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["socket.io-parser", [\
+      ["npm:4.2.4", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/socket.io-parser-npm-4.2.4-bf87f78bcd-10c0.zip/node_modules/socket.io-parser/",\
+        "packageDependencies": [\
+          ["socket.io-parser", "npm:4.2.4"],\
+          ["@socket.io/component-emitter", "npm:3.1.2"],\
+          ["debug", "virtual:e8bdcef0cf0934194f6c013397211c12e97f7afa25e778315990e5af67273d4a72a5fd876374ee7ab692ddc04df0f6a366086d076f5cf07da179b76448a13afc#npm:4.3.7"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["socks", [\
       ["npm:2.8.4", {\
         "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/socks-npm-2.8.4-8194b86bd0-10c0.zip/node_modules/socks/",\
@@ -10930,6 +11140,13 @@ const RAW_RUNTIME_STATE =
           ["undici-types", "npm:6.19.8"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:6.20.0", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/undici-types-npm-6.20.0-bd21e669af-10c0.zip/node_modules/undici-types/",\
+        "packageDependencies": [\
+          ["undici-types", "npm:6.20.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["unicode-canonical-property-names-ecmascript", [\
@@ -11080,6 +11297,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["vary", [\
+      ["npm:1.1.2", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/vary-npm-1.1.2-b49f70ae63-10c0.zip/node_modules/vary/",\
+        "packageDependencies": [\
+          ["vary", "npm:1.1.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["which", [\
       ["npm:2.0.2", {\
         "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/which-npm-2.0.2-320ddf72f7-10c0.zip/node_modules/which/",\
@@ -11189,6 +11415,41 @@ const RAW_RUNTIME_STATE =
           ["ansi-styles", "npm:6.2.1"],\
           ["string-width", "npm:5.1.2"],\
           ["strip-ansi", "npm:7.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["ws", [\
+      ["npm:8.17.1", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/ws-npm-8.17.1-f57fb24a2c-10c0.zip/node_modules/ws/",\
+        "packageDependencies": [\
+          ["ws", "npm:8.17.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:e8bdcef0cf0934194f6c013397211c12e97f7afa25e778315990e5af67273d4a72a5fd876374ee7ab692ddc04df0f6a366086d076f5cf07da179b76448a13afc#npm:8.17.1", {\
+        "packageLocation": "./.yarn/__virtual__/ws-virtual-4060a826ab/3/Users/miruh/AppData/Local/Yarn/Berry/cache/ws-npm-8.17.1-f57fb24a2c-10c0.zip/node_modules/ws/",\
+        "packageDependencies": [\
+          ["ws", "virtual:e8bdcef0cf0934194f6c013397211c12e97f7afa25e778315990e5af67273d4a72a5fd876374ee7ab692ddc04df0f6a366086d076f5cf07da179b76448a13afc#npm:8.17.1"],\
+          ["@types/bufferutil", null],\
+          ["@types/utf-8-validate", null],\
+          ["bufferutil", null],\
+          ["utf-8-validate", null]\
+        ],\
+        "packagePeers": [\
+          "@types/bufferutil",\
+          "@types/utf-8-validate",\
+          "bufferutil",\
+          "utf-8-validate"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["xmlhttprequest-ssl", [\
+      ["npm:2.1.2", {\
+        "packageLocation": "../../Users/miruh/AppData/Local/Yarn/Berry/cache/xmlhttprequest-ssl-npm-2.1.2-7d8e3817bc-10c0.zip/node_modules/xmlhttprequest-ssl/",\
+        "packageDependencies": [\
+          ["xmlhttprequest-ssl", "npm:2.1.2"]\
         ],\
         "linkType": "HARD"\
       }]\
