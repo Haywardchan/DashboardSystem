@@ -8,9 +8,36 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import L from 'leaflet'
 import 'leaflet.heat'
 import { MapViewProps } from '@/types'
+import useDrone from '@/hooks/useDrone'
+import { useLocalization } from '@/hooks/useLocalization'
 
-export default function MapViewHeat({ locations }: MapViewProps) {
+export default function MapViewHeat({target, locations }: MapViewProps) {
   const mapContainer = useRef<HTMLDivElement | null>(null);
+  const {droneLocation} = useDrone()
+  const {localization} = useLocalization({
+    "gateway": [
+        [
+            22.336954387741777,
+            114.26290529958185,
+            -90,
+            9
+        ],
+        [
+            22.33845287278898,
+            114.26281946889816,
+            -95,
+            9
+        ],
+        [
+            22.33758705182435,
+            114.26299069610249,
+            -105,
+            10
+        ]
+    ],
+    "return_image": false
+})
+
 
   useEffect(() => {
     if (!mapContainer.current || !locations.length) return;
@@ -33,9 +60,10 @@ export default function MapViewHeat({ locations }: MapViewProps) {
     // Convert locations to heatmap data points with normalized intensity
     const heatData = locations.map(loc => {
       const residenceTime = parseInt(loc.duration || '0');
-      // Normalize between 0.3 and 1.0 to ensure minimum visibility
+      const zoomLevel = map.getZoom();
+      // Adjust intensity based on zoom level and residence time
       const intensity = residenceTime === 0 ? 0.3 : 
-        0.3 + (0.7 * (residenceTime / maxResidenceTime));
+        (0.3 + (0.7 * (residenceTime / maxResidenceTime))) / (zoomLevel/10);
       
       return [
         loc.latitude,
@@ -47,8 +75,9 @@ export default function MapViewHeat({ locations }: MapViewProps) {
     // Add additional points around each location for better heat spread
     locations.forEach(loc => {
       const residenceTime = parseInt(loc.duration || '0');
+      const zoomLevel = map.getZoom();
       const baseIntensity = residenceTime === 0 ? 0.15 : 
-        0.15 + (0.15 * (residenceTime / maxResidenceTime));
+        (0.15 + (0.15 * (residenceTime / maxResidenceTime))) / (zoomLevel/10);
       
       const radius = 0.005;
       for (let i = 0; i < 8; i++) {
@@ -75,10 +104,75 @@ export default function MapViewHeat({ locations }: MapViewProps) {
       }
     }).addTo(map);
 
+    // Show target
+    if(target){
+      // const lat = target.next_target[0];
+      // const lng = target.next_target[1]; 
+      // const sizeOffset = 0.0002;
+      // const imageBounds = [
+      //   [lat - sizeOffset, lng - sizeOffset], // SW corner
+      //   [lat + sizeOffset, lng + sizeOffset]  // NE corner
+      // ];
+      // // Create drone image overlay
+      // const droneIcon = L.imageOverlay('icons/drone.png', imageBounds, {
+      //   opacity: 0.9,
+      //   interactive: true,
+      //   className: 'drone-overlay'
+      // }).addTo(map);
+
+      // // Add click handler
+      // droneIcon.on('click', () => onLocationSelect(target));
+
+      //alternative approach
+      const droneIcon = L.icon({
+        iconUrl: 'images/icons/drone.png',
+        // iconUrl: "https://cdn-icons-png.flaticon.com/512/6221/6221857.png",
+        iconSize: [64, 64], // size in pixels
+        iconAnchor: [16, 16] // center point
+      });
+
+      // Create marker
+      L.marker(target.next_target, {
+        icon: droneIcon
+      }).addTo(map)
+      
+    }
+    if (droneLocation){
+      // Create custom icon
+      const droneIcon = L.icon({
+        // iconUrl: 'images/icons/drone.png',
+        iconUrl: "https://cdn-icons-png.flaticon.com/512/6221/6221857.png",
+        iconSize: [32, 32], // size in pixels
+        iconAnchor: [16, 16] // center point
+      });
+
+      // Create marker
+      L.marker([droneLocation.latitude, droneLocation.longitude], {
+        icon: droneIcon
+      }).addTo(map)
+    }
+
+    if (localization.estimated_location){
+      // Create custom icon
+      const droneIcon = L.icon({
+        // iconUrl: 'images/icons/drone.png',
+        iconUrl: "https://cdn-icons-png.flaticon.com/512/2450/2450825.png",
+        iconSize: [32, 32], // size in pixels
+        iconAnchor: [16, 16] // center point
+      });
+
+      // Create marker
+      L.marker(localization.estimated_location, {
+        icon: droneIcon
+      }).addTo(map)
+    }
+    
+
     return () => {
       map.remove();
     };
-  }, [locations]);
+
+  }, [locations, droneLocation, localization]);
 
   return (
     <Card>

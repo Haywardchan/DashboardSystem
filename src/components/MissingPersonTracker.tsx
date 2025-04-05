@@ -16,7 +16,6 @@ import { DatePicker } from "@/components/ui/date-picker"
 import { fetchNextTarget, performSearch, SearchClient } from "@/hooks/useEvent";
 import useDrone from "@/hooks/useDrone";
 import { useLocalization } from "@/hooks/useLocalization";
-import { getLocalization } from "@/services/userService";
 
 interface MissingPersonTrackerProps {
   devEUI: string;
@@ -58,8 +57,11 @@ export default function MissingPersonTracker({
     ],
     "return_image": false
 })
-  const client = new SearchClient()
+  const client = useRef(new SearchClient())
   const {droneLocation} = useDrone()
+  const [latitude, setLatitude] = useState()
+  const [longitude, setLongitude] = useState()
+
   useEffect(()=>{
     console.log("jefiejafo")
     if (droneLocation && !hasRun.current){
@@ -79,7 +81,7 @@ export default function MissingPersonTracker({
       rssi: -110,
       model_version: 'v1',
       guide_weight: 2.0
-    }, client)
+    }, client.current)
     console.log(JSON.stringify(target))
     setTarget(target)
   }
@@ -90,7 +92,7 @@ export default function MissingPersonTracker({
       current_loc: curr,
       grid_size: 250,
       num_canvas: 56
-    }, client)
+    }, client.current)
     setData(data)
   }
   useEffect(() => {
@@ -3424,6 +3426,7 @@ export default function MissingPersonTracker({
             </div>
             {showHeatmap ? (
               <HeatMapView
+                target={target?.data}
                 locations={locations}
                 onLocationSelect={setSelectedLocation}
               />
@@ -3435,16 +3438,28 @@ export default function MissingPersonTracker({
               />
             )}
             <div>Data: {JSON.stringify(data?.data)}</div>
-          <button
-            onClick={() => {
-              if(droneLocation)
-                fetchTarget([parseFloat(droneLocation.latitude), parseFloat(droneLocation.longitude)])
-              }
-            }
-            className="mt-4 px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-700 transition duration-300"
-          >
-            Start Search
-          </button>
+          <div className="flex flex-col mt-4">
+            <div className="flex justify-around mb-4">
+              <input
+                type="text"
+                placeholder="Latitude"
+                className="flex-1 px-auto py-2 border border-gray-300 rounded-md mr-2"
+                onChange={(e) => setLatitude(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Longitude"
+                className="flex-1 px-auto py-2 border border-gray-300 rounded-md"
+                onChange={(e) => setLongitude(e.target.value)}
+              />
+            </div>
+            <button
+              onClick={() => fetchTarget([parseFloat(latitude), parseFloat(longitude)])}
+              className="px-4 py-2 bg-black text-white font-bold rounded hover:bg-gray-700 transition duration-300"
+            >
+              Start Search
+            </button>
+          </div>
           <div>Target: {JSON.stringify(target?.data)}</div>
           <div>Drone: {JSON.stringify(droneLocation)}</div>
           <div>Localization: {JSON.stringify(localization)}</div>
