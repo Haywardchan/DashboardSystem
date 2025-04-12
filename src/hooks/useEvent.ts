@@ -1,7 +1,8 @@
 // Event payload types
 export interface InitSearchParams {
     agent: 'heatmap_greedy' | string; // Use union types for known agents
-    current_loc: [number, number]; // Tuple type for coordinates
+    origin_loc: [number, number]; // Tuple type for coordinates
+    start_loc: [number, number];
     grid_size: number;
     num_canvas: number;
 }

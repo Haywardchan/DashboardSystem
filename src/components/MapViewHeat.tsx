@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Card, CardContent } from "@/components/ui/card"
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-defaulticon-compatibility'
@@ -13,6 +13,7 @@ import { useLocalization } from '@/hooks/useLocalization'
 
 export default function MapViewHeat({target, locations }: MapViewProps) {
   const mapContainer = useRef<HTMLDivElement | null>(null);
+  const mapRef = useRef<L.Map | null>(null);
   const {droneLocation} = useDrone()
   const {localization} = useLocalization({
     "gateway": [
@@ -38,19 +39,29 @@ export default function MapViewHeat({target, locations }: MapViewProps) {
     "return_image": false
 })
 
-
   useEffect(() => {
     if (!mapContainer.current || !locations.length) return;
 
-    // Initialize map centered on the first location
-    const map = L.map(mapContainer.current, { 
-      attributionControl: false 
-    }).setView([locations[0].latitude, locations[0].longitude], 12);
+    // Initialize map if it doesn't exist
+    if (!mapRef.current) {
+      mapRef.current = L.map(mapContainer.current, { 
+        attributionControl: false 
+      }).setView([locations[0].latitude, locations[0].longitude], 12);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(mapRef.current);
+    }
+
+    const map = mapRef.current;
+
+    // Clear existing layers
+    map.eachLayer((layer) => {
+      if (!(layer instanceof L.TileLayer)) {
+        map.removeLayer(layer);
+      }
+    });
 
     // Find max residence time for normalization
     const maxResidenceTime = Math.max(...locations.map(loc => 
@@ -61,7 +72,6 @@ export default function MapViewHeat({target, locations }: MapViewProps) {
     const heatData = locations.map(loc => {
       const residenceTime = parseInt(loc.duration || '0');
       const zoomLevel = map.getZoom();
-      // Adjust intensity based on zoom level and residence time
       const intensity = residenceTime === 0 ? 0.3 : 
         (0.3 + (0.7 * (residenceTime / maxResidenceTime))) / (zoomLevel/10);
       
@@ -104,75 +114,37 @@ export default function MapViewHeat({target, locations }: MapViewProps) {
       }
     }).addTo(map);
 
-    // Show target
-    if(target){
-      // const lat = target.next_target[0];
-      // const lng = target.next_target[1]; 
-      // const sizeOffset = 0.0002;
-      // const imageBounds = [
-      //   [lat - sizeOffset, lng - sizeOffset], // SW corner
-      //   [lat + sizeOffset, lng + sizeOffset]  // NE corner
-      // ];
-      // // Create drone image overlay
-      // const droneIcon = L.imageOverlay('icons/drone.png', imageBounds, {
-      //   opacity: 0.9,
-      //   interactive: true,
-      //   className: 'drone-overlay'
-      // }).addTo(map);
-
-      // // Add click handler
-      // droneIcon.on('click', () => onLocationSelect(target));
-
-      //alternative approach
-      const droneIcon = L.icon({
-        iconUrl: 'images/icons/drone.png',
-        // iconUrl: "https://cdn-icons-png.flaticon.com/512/6221/6221857.png",
-        iconSize: [64, 64], // size in pixels
-        iconAnchor: [16, 16] // center point
-      });
-
-      // Create marker
-      L.marker(target.next_target, {
-        icon: droneIcon
-      }).addTo(map)
-      
-    }
-    if (droneLocation){
-      // Create custom icon
-      const droneIcon = L.icon({
-        // iconUrl: 'images/icons/drone.png',
-        iconUrl: "https://cdn-icons-png.flaticon.com/512/6221/6221857.png",
-        iconSize: [32, 32], // size in pixels
-        iconAnchor: [16, 16] // center point
-      });
-
-      // Create marker
-      L.marker([droneLocation.latitude, droneLocation.longitude], {
-        icon: droneIcon
-      }).addTo(map)
+    // Add target marker if exists
+    if (target) {
+      L.circleMarker(target.next_target, {
+        radius: 12,
+        fillColor: '#4CAF50',
+        color: '#388E3C',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.6
+      }).addTo(map);
     }
 
-    if (localization.estimated_location){
-      // Create custom icon
-      const droneIcon = L.icon({
-        // iconUrl: 'images/icons/drone.png',
-        iconUrl: "https://cdn-icons-png.flaticon.com/512/2450/2450825.png",
-        iconSize: [32, 32], // size in pixels
-        iconAnchor: [16, 16] // center point
-      });
-
-      // Create marker
-      L.marker(localization.estimated_location, {
-        icon: droneIcon
-      }).addTo(map)
+    // Add drone location marker if exists
+    if (droneLocation) {
+      L.circleMarker([droneLocation.latitude, droneLocation.longitude], {
+        radius: 10,
+        fillColor: '#FF5722',
+        color: '#E64A19',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.6
+      }).addTo(map);
     }
-    
 
     return () => {
-      map.remove();
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
     };
-
-  }, [locations, droneLocation, localization]);
+  }, [locations, target, droneLocation]);
 
   return (
     <Card>
@@ -183,5 +155,5 @@ export default function MapViewHeat({target, locations }: MapViewProps) {
         />
       </CardContent>
     </Card>
-  )
+  );
 } 

@@ -62,8 +62,8 @@ export default function LoRaTagTable() {
 
             {/* Table Body */}
             <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
-              {missingPersons.map((person: MissingPerson) => (
-                  <TableRow>
+              {missingPersons.map((person: MissingPerson, index) => (
+                  <TableRow key={index}>
                   <TableCell className="px-5 py-4 sm:px-6 text-start">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 overflow-hidden rounded-full">
