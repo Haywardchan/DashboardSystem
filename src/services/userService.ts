@@ -99,6 +99,17 @@ export const getDrone = async () => {
   return response.json(); // Return the response data
 };
 
+export const deployMission = async (droneId: number, latitude: number, longitude: number) => {
+  const response = await fetch(`http://192.168.254.2:8080/api/deploymission?droneId=${droneId}&latitude=${latitude}&longitude=${longitude}`, {
+    method: 'POST',
+  });
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.error);
+  }
+  return response.json(); // Return the response data
+};
+
 // Function to get the localization result
 export const getLocalization = async (gatewayData: any) => {
   const response = await fetch(`http://10.0.0.26:5000/api/localization`, {

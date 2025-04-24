@@ -114,4 +114,14 @@ export function getJsonValue(loc: [number, number], jsonFile: string): number {
   }
 }
 
+import droneJson from './drone.json';
+
+export interface Drone {
+  droneId: string;
+  latitude: number;
+  longitude: number;
+}
+
+export const drone: Drone[] = droneJson;
+
 

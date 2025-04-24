@@ -125,7 +125,7 @@ export default function MapView({target, locations, localization, onLocationSele
         const drone = L.marker([droneLocation.latitude, droneLocation.longitude], {
           icon: droneIcon
         }).addTo(map)
-        const location_latlong = `${droneLocation.latitude}, ${droneLocation.longitude}`
+        const location_latlong = `POI: (${droneLocation.latitude}, ${droneLocation.longitude}), Status: ${droneLocation.status}`
         // drone.bindPopup(location_latlong)
         drone.on('click', () => {
           // Create a popup that stays longer

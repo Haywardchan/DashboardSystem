@@ -1,0 +1,32 @@
+[
+    {
+        "latitude": 22.33886,
+        "longitude": 114.26404,
+        "droneId": "001"
+    },
+    {
+        "latitude": 22.33895,
+        "longitude": 114.26376,
+        "droneId": "001"
+    },
+    {
+        "latitude": 22.3920,
+        "longitude": 114.26375,
+        "droneId": "001"
+    },
+    {
+        "latitude": 22.33927,
+        "longitude": 114.26390,
+        "droneId": "001"
+    },
+    {
+        "latitude": 22.33914,
+        "longitude": 114.26402,
+        "droneId": "001"
+    },
+    {
+        "latitude": 22.33899,
+        "longitude": 114.26408,
+        "droneId": "001"
+    }
+]

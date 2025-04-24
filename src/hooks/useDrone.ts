@@ -10,6 +10,7 @@ export interface DroneLocation {
   droneid: number;
   latitude: number;
   longitude: number;
+  status: string;
 }
 
 const useDrone = (pollInterval: number = 50000) => {
